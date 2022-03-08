@@ -1,0 +1,18 @@
+Django commands -
+
+pip install pipenv - crete virtual env.
+
+create folder project
+
+cd new folder
+
+pipenv install django / pip install django
+
+pipenv shell
+
+django-admin
+
+django-admin startproect <homemodule> .
+
+python manage.py runserver
+
