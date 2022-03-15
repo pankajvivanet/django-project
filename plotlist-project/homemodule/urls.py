@@ -6,4 +6,5 @@ urlpatterns = [
     path('redirecturl/', views.redirectURL),
     path('inputurl/<str:inputText>', views.acceptInput),
     path('displayhtml/', views.templateHTML),
+    path('show/', views.show),
 ]

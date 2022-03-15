@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+    <head>
+
+    </head>
+    <body>
+        <select name="cities">
+            <option>--- select country ---</option>
+            {% for city in CityName %}
+            <option value="{{city.id}}">{{city.name}}</option>
+            {% endfor %}
+        </select>
+        <select name="locality">
+            <option>------</option>
+        </select>
+    </body>
+</html>
