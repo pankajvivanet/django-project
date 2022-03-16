@@ -18,11 +18,17 @@ def redirectURL(request):
 def acceptInput(request, inputText):
     text = "Todat is = %s"%inputText
     return HttpResponse(text)
-
+ 
 def templateHTML(request):
     return render(request, 'welcome.html', {'name' : 'John'})
 
 def show(request):
     citynames = CityName.objects.all()
-    areanames = AreaNames.objects.all()
-    return render(request, 'show.html', {'CityName': citynames, "AreaNames":areanames})
+    if request.method == "POST":
+        if request.POST.get('cityNames'):
+            areanames = AreaNames.objects.filter(city_id = request.POST.get('cityNames'))
+            #select * from area where city_id =?
+            return render(request, 'show.html', {"CityName": citynames, "AreaNames" : areanames, "selectedCityID":request.POST.get('cityNames') })
+    else:
+        areanames = AreaNames.objects.filter(city_id = 0)
+        return render(request, 'show.html', {"CityName": citynames, "AreaNames" : areanames })

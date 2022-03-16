@@ -1,17 +1,27 @@
 <!DOCTYPE html>
+<head>
 
-    <head>
-
-    </head>
+</head>
     <body>
-        <select name="cities">
-            <option>--- select country ---</option>
-            {% for city in CityName %}
-            <option value="{{city.id}}">{{city.name}}</option>
-            {% endfor %}
-        </select>
-        <select name="locality">
-            <option>------</option>
-        </select>
+        <form method="POST"> {%csrf_token%} 
+          {{selectedCityID}}
+          <select name="cityNames" onchange="this.form.submit()">
+              <option>--- city name ---</option>
+            {% for result in CityName %}
+              {% if result.id == selectedCityID%}
+                <option value="{{result.id}}" selected>{{result.name}}</option>
+              {% else %}
+                <option value="{{result.id}}">{{result.name}}</option>
+              {% endif %}
+            {% endfor%}
+          </select>
+
+          <select name="locality">
+              <option>--- Area name ---</option>
+            {% for result in AreaNames %}
+              <option value="{{result.id}}">{{result.name}}</option>
+            {% endfor%}
+          </select>
+      </form>
     </body>
 </html>
